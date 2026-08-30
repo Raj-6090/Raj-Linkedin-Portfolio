@@ -1,0 +1,170 @@
+{
+    "profile": {
+        "name": "Raj Kaneriya",
+        "title": "Frontend Developer",
+        "email": "rajkaneriya22@gmail.com",
+        "phone": "8160309964",
+        "linkedin": "linkedin.com/in/raj-kaneriya22",
+        "location": "Ahmedabad",
+        "photo": "/images/raj3.jpg"
+    },
+    "coder": {
+        "hardWorker": true,
+        "quickLearner": true,
+        "problemSolver": true,
+        "minimumSkills": 5
+    },
+    "summary": "Driven by curiosity and equipped with modern technological skills, I aspire to work in a collaborative environment where continuous learning is encouraged and every challenge presents an opportunity for innovation, contribution, and professional growth.",
+    "about": "I’m Raj Kaneriya, a Frontend Developer who enjoys turning ideas into responsive, practical web experiences. My work focuses on React.js, JavaScript, TypeScript, reusable UI, API integration and clean component architecture. Through eBusiness and task-management projects, I have built a strong habit of learning by solving real problems and collaborating with teams. I’m looking forward to contributing these skills to a product-focused team while continuing to grow.",
+    "skills": [
+        "React.js",
+        "Node.js",
+        "JavaScript",
+        "TypeScript",
+        "Redux Toolkit",
+        "Context API",
+        "React Query",
+        "Tailwind CSS",
+        "SCSS",
+        "Material UI",
+        "Bootstrap",
+        "REST APIs",
+        "Axios",
+        "Socket.io",
+        "Chart.js",
+        "Stripe",
+        "AI Integration",
+        "Vite",
+        "Git",
+        "GitHub"
+    ],
+    "softSkills": [
+        "Leadership",
+        "Teamwork",
+        "Problem Solving"
+    ],
+    "experience": [
+        {
+            "role": "Frontend Developer",
+            "company": "Cherrypik Software Inc.",
+            "period": "Jun 2025 – Present",
+            "location": "Ahmedabad",
+            "highlights": [
+                "Working on responsive frontend interfaces and practical web experiences.",
+                "Contributing to clean, maintainable components and real-world product work."
+            ]
+        },
+        {
+            "role": "React Developer Intern",
+            "company": "Cherrypik Software Inc.",
+            "period": "Mar 2025 – May 2025",
+            "location": "Ahmedabad",
+            "highlights": [
+                "Completed a six-month internship that improved my confidence and practical abilities.",
+                "The hands-on experience strengthened my interest in solving real-world problems and encouraged continuous learning and contribution."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "id": 1,
+            "title": "Responsive Dynamic eBusiness Website",
+            "myRole": "Frontend Developer",
+            "description": "Converted a responsive HTML/Bootstrap layout into React.js and connected it to a local JSON API for real-time data processing and a dynamic user experience.",
+            "technologies": [
+                "React.js",
+                "JavaScript (ES6+)",
+                "HTML5",
+                "CSS3",
+                "Bootstrap 5",
+                "JSON Server",
+                "REST API",
+                "Axios"
+            ],
+            "highlight": "Responsive HTML/Bootstrap to React conversion with local db.json API integration."
+        },
+        {
+            "id": 2,
+            "title": "Task Management Web App",
+            "myRole": "Frontend Developer",
+            "description": "A responsive React.js web app for creating, updating and tracking tasks in real time, with employee task updates, an admin notification panel and API integration.",
+            "technologies": [
+                "React.js",
+                "JavaScript",
+                "HTML",
+                "CSS",
+                "Bootstrap",
+                "Tailwind",
+                "REST API"
+            ],
+            "highlight": "Role-based task workflow designed to improve productivity and user experience."
+        },
+        {
+            "id": 3,
+            "title": "Task Management & OTP Verification System",
+            "myRole": "Full Stack Developer",
+            "description": "A secure task management web application with email-based OTP authentication and dynamic user management.",
+            "technologies": [
+                "PHP",
+                "MySQL",
+                "PHPMailer",
+                "HTML",
+                "CSS",
+                "JavaScript",
+                "Composer",
+                "SMTP"
+            ],
+            "highlight": "Secure authentication and user management using PHP and MySQL."
+        },
+        {
+            "id": 4,
+            "title": "HRMS – Enterprise HR & Attendance Platform",
+            "myRole": "Frontend Developer",
+            "description": "Built an enterprise HR management platform featuring Admin and Employee portals, daily working hours tracking, attendance logging, leave CRUD workflows, time entry management, and light/dark theme support.",
+            "technologies": [
+                "React.js",
+                "JavaScript (ES6+)",
+                "Redux Toolkit",
+                "Context API",
+                "Tailwind CSS",
+                "REST API",
+                "Laravel (Backend)",
+                "Axios"
+            ],
+            "highlight": "Dual-portal HRMS featuring daily hours tracking, leave CRUD, time entries, and dark/light themes."
+        }
+    ],
+    "education": [
+        {
+            "degree": "Master of Computer Application",
+            "institution": "LJ University",
+            "location": "Ahmedabad",
+            "year": "2025"
+        },
+        {
+            "degree": "Bachelor of Computer Application",
+            "institution": "Gujarat University",
+            "location": "Ahmedabad",
+            "year": "2023"
+        },
+        {
+            "degree": "HSC (Commerce)",
+            "institution": "Alpha High School",
+            "location": "Junagadh",
+            "year": "2020"
+        }
+    ],
+    "certificates": [
+        "4 certificates from the Spoken Tutorial program by IIT Bombay.",
+        "Completed 7 online courses from Google and IBM and received certificates for successful completion."
+    ],
+    "messages": [
+        {
+            "id": 1788013223935,
+            "name": "jaimin",
+            "email": "rajkaneriya22@gmail.com",
+            "message": "ffff",
+            "submittedAt": "8/29/2026, 7:50:23 PM"
+        }
+    ]
+}
