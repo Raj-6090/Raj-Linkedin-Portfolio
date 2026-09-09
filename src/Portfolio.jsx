@@ -207,7 +207,21 @@ export default function Portfolio() {
   const { profile, coder, summary, about, skills, softSkills, projects, experience, education, certificates } = data;
   const links = ['About', 'Experience', 'Skills', 'Education', 'Projects', 'Contact'];
 
-  return <main className="ashik-style"><header className="ref-nav"><a className="ref-logo" href="#home">{profile.name.toUpperCase()}</a><button className="menu-trigger" onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button><nav className={open ? 'show' : ''}>{links.map(link => <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setOpen(false)}>{link}</a>)}</nav></header>
+  return <main className="ashik-style">
+    <header className="ref-nav">
+      <a className="ref-logo" href="#home">{profile.name.toUpperCase()}</a>
+      <button className="menu-trigger" onClick={() => setOpen(!open)} aria-label="Toggle navigation menu">
+        {open ? <X size={24} /> : <Menu size={24} />}
+      </button>
+      <nav className={open ? 'show' : ''}>
+        {links.map(link => (
+          <a key={link} href={`#${link.toLowerCase()}`} onClick={() => setOpen(false)}>
+            {link}
+          </a>
+        ))}
+      </nav>
+      {open && <div className="nav-backdrop" onClick={() => setOpen(false)} />}
+    </header>
     <section id="home" className="ref-hero"><div className="hero-copy reveal"><h1>Hello, This is <span className="pink">{profile.name.toUpperCase()}</span>, I'm a Professional <span className="mint">{profile.title}</span>.</h1><div className="socials"><a href={`https://${profile.linkedin}`} target="_blank" rel="noreferrer" data-tooltip="Connect on LinkedIn" aria-label="LinkedIn"><LinkedinIcon /></a><a href={`mailto:${profile.email}`} data-tooltip="Send Email to Raj" aria-label="Email Raj"><Mail /></a></div><div className="hero-actions"><a href="#contact" className="outline-cta" data-tooltip="Jump to Contact Form">Contact me <ArrowRight size={16} /></a><a href="#projects" className="fill-cta" data-tooltip="View Featured Projects">View projects <Download size={16} /></a></div></div><CodeCard profile={profile} skills={skills} coder={coder} softSkills={softSkills} /></section>
     <section id="about" className="about-section reveal-on-scroll"><div className="side-title">ABOUT ME</div><div className="about-copy"><p className="mint kicker">WHO I AM?</p><p>{about}</p></div><div className="profile-orb" data-tooltip="Raj Kaneriya - Frontend Developer"><img src={profile.photo} alt={profile.name} /><em>{profile.title}</em></div></section>
     <section id="experience" className="experience-section reveal-on-scroll"><SectionTitle title="Experiences" /><div className="experience-layout"><div className="experience-art"><img className="experience-visual" src="/images/experience-workspace.png" alt="Developer workstation" data-tooltip="Frontend Workstation" /></div><div className="experience-grid">{experience.map((item, index) => <article className="glow-card" style={{ '--delay': `${index * 100}ms` }} key={`${item.company}-${item.role}`} data-tooltip={`${item.role} at ${item.company}`}><div className="experience-card-body"><div className="experience-icon"><Laptop2 size={30} /></div><div><p className="mint experience-period">{item.period}</p><h3>{item.role}</h3><p className="experience-company">{item.company}</p></div></div><ul>{item.highlights.map(point => <li key={point}>{point}</li>)}</ul></article>)}</div></div></section>
