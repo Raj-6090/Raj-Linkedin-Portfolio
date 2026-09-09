@@ -1,155 +1,218 @@
 /* ==========================================================================
-   RAJ KANERIYA PORTFOLIO — DEDICATED RESPONSIVE DESIGN SYSTEM
-   Supports: Mobile Small (<480px), Mobile Standard (480-768px),
-   Tablet (768-1024px), Laptop (1024-1280px), Desktop (>1280px)
+   RAJ KANERIYA PORTFOLIO — MASTER RESPONSIVE STYLESHEET
+   Fixes layout shifting, side-title overflow, squished columns,
+   and ensures 100% perfect fluid display on Galaxy S25, iPhone & Tablets.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Navbar & Navigation Responsiveness (<= 768px)
+   0. Global Base Reset for Responsive Security
    -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
-  .ashik-style {
-    padding: 0 16px;
-  }
+html, body {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box !important;
+}
 
-  .ref-nav {
-    padding: 14px 20px;
-    z-index: 100;
-  }
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
 
-  .ref-logo {
-    font-size: 1.1rem;
-  }
+img, svg, canvas, video {
+  max-width: 100% !important;
+  height: auto !important;
+}
 
-  .menu-trigger {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    color: var(--text-main);
-    z-index: 101;
-    transition: all 0.25s ease;
-  }
+/* Hide Protruding Side Titles Except on Wide Desktop screens (> 1300px) */
+.side-title,
+.contact-side-title {
+  display: none !important;
+}
 
-  .menu-trigger:active {
-    transform: scale(0.95);
-  }
-
-  .ref-nav nav {
+@media (min-width: 1300px) {
+  .side-title,
+  .contact-side-title {
+    display: block !important;
     position: absolute;
-    top: calc(100% + 10px);
-    left: 0;
-    right: 0;
-    flex-direction: column;
-    background: rgba(13, 18, 36, 0.98);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
-    padding: 20px 16px;
-    gap: 12px;
-    border: 1px solid var(--border-subtle);
-    border-radius: 14px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7);
-    display: flex;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-12px);
-    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s ease;
-    pointer-events: none;
-    z-index: 101;
-  }
-
-  .ref-nav nav.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  .ref-nav nav a {
-    width: 100%;
-    text-align: center;
-    padding: 12px 18px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.03);
-    font-size: 0.98rem;
-    font-weight: 600;
-  }
-
-  .ref-nav nav a:hover,
-  .ref-nav nav a:active {
-    background: rgba(22, 242, 179, 0.12);
-    color: var(--neon-mint);
+    right: -58px;
+    top: 50%;
+    transform: rotate(90deg);
+    padding: 6px 18px;
+    background: #1a1443;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
   }
 }
 
+/* Force container bounds to prevent horizontal whitespace on mobile */
+.ashik-style {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 24px;
+  position: relative !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
 /* --------------------------------------------------------------------------
-   2. Hero Section Responsiveness
+   1. Laptop & Tablet Layout Tuning (768px - 1100px)
    -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .ref-hero {
+    gap: 36px;
+  }
+
+  .about-section {
+    gap: 36px;
+  }
+
+  .experience-layout {
+    gap: 36px;
+  }
+
+  .contact-grid {
+    gap: 36px;
+  }
+}
+
 @media (max-width: 992px) {
   .ref-hero {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 36px 0 24px;
-    min-height: auto;
-    text-align: center;
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+    padding: 40px 0 24px !important;
+    min-height: auto !important;
+    text-align: center !important;
   }
 
   .hero-copy {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
   }
 
   .socials {
-    justify-content: center;
+    justify-content: center !important;
   }
 
   .hero-actions {
-    justify-content: center;
+    justify-content: center !important;
   }
 }
 
-@media (max-width: 480px) {
-  .hero-actions {
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
+@media (max-width: 900px) {
+  .about-section {
+    flex-direction: column-reverse !important;
+    text-align: center !important;
+    gap: 32px !important;
   }
 
-  .outline-cta,
-  .fill-cta {
-    width: 100%;
-    justify-content: center;
-    padding: 12px 24px;
-    font-size: 0.88rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .terminal-card {
-    padding: 16px 14px;
+  .about-copy {
+    max-width: 100% !important;
   }
 
-  .terminal-card pre {
-    font-size: 0.78rem;
-    line-height: 1.65;
+  .profile-orb {
+    margin: 0 auto !important;
+  }
+
+  .experience-layout {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+
+  .experience-visual {
+    max-width: 380px !important;
+    margin: 0 auto !important;
+  }
+
+  .projects-terminal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
   }
 }
 
 /* --------------------------------------------------------------------------
-   3. Section Headers & Global Section Spacing
+   2. Mobile Standard Breakpoint (<= 768px)
    -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-  .side-title {
-    display: none;
-  }
-}
-
 @media (max-width: 768px) {
+  .ashik-style {
+    padding: 0 16px !important;
+  }
+
+  .ref-nav {
+    padding: 14px 18px !important;
+    z-index: 100 !important;
+  }
+
+  .ref-logo {
+    font-size: 1.1rem !important;
+  }
+
+  .menu-trigger {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 10px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-subtle) !important;
+    color: var(--text-main) !important;
+    z-index: 101 !important;
+  }
+
+  .ref-nav nav {
+    position: absolute !important;
+    top: calc(100% + 10px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    flex-direction: column !important;
+    background: rgba(13, 18, 36, 0.98) !important;
+    backdrop-filter: blur(24px) !important;
+    -webkit-backdrop-filter: blur(24px) !important;
+    padding: 20px 16px !important;
+    gap: 12px !important;
+    border: 1px solid var(--border-subtle) !important;
+    border-radius: 14px !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7) !important;
+    display: flex !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transform: translateY(-12px) !important;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease !important;
+    pointer-events: none !important;
+    z-index: 101 !important;
+  }
+
+  .ref-nav nav.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  .ref-nav nav a {
+    width: 100% !important;
+    text-align: center !important;
+    padding: 12px 18px !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.03) !important;
+    font-size: 0.98rem !important;
+    font-weight: 600 !important;
+  }
+
   .about-section,
   .experience-section,
   .skills-section,
@@ -159,237 +222,50 @@
     padding-top: 36px !important;
     padding-bottom: 36px !important;
   }
-}
 
-@media (max-width: 600px) {
-  .section-title-ref {
-    margin: 0 0 32px 0 !important;
-  }
-
-  .section-title-ref .line {
-    width: 44px;
-  }
-
-  .section-title-ref .badge {
-    font-size: 1.05rem;
-    padding: 8px 20px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   4. About Section Responsiveness
-   -------------------------------------------------------------------------- */
-@media (max-width: 850px) {
-  .about-section {
-    flex-direction: column-reverse;
-    text-align: center;
-    gap: 32px;
-  }
-
-  .profile-orb {
-    margin: 0 auto;
-    width: 180px;
-    height: 220px;
-  }
-
-  .about-copy {
-    max-width: 100%;
-  }
-
-  .about-copy p {
-    font-size: 1.02rem;
-    line-height: 1.7;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-orb {
-    width: 160px;
-    height: 200px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   5. Experience Section Responsiveness
-   -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .experience-layout {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .experience-visual {
-    max-width: 360px;
-  }
-}
-
-@media (max-width: 600px) {
-  .glow-card {
-    padding: 20px 18px;
-  }
-
-  .experience-card-body {
-    gap: 14px;
-  }
-
-  .experience-icon {
-    padding: 8px;
-  }
-
-  .experience-card-body h3 {
-    font-size: 1.12rem;
-  }
-
-  .glow-card ul {
-    padding-left: 16px;
-  }
-
-  .glow-card ul li {
-    font-size: 0.88rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   6. Skills Swiper Responsiveness
-   -------------------------------------------------------------------------- */
-@media (max-width: 600px) {
-  .skills-track {
-    gap: 12px;
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-
-  .skills-track .skill-card {
-    width: 135px;
-    height: 120px;
-    flex: 0 0 135px;
-    padding: 12px 10px;
-    gap: 10px;
-  }
-
-  .skills-track .skill-card > svg {
-    width: 32px;
-    height: 32px;
-  }
-
-  .skills-track .skill-card strong {
-    font-size: 0.82rem;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   7. Education Grid Responsiveness
-   -------------------------------------------------------------------------- */
-@media (min-width: 769px) and (max-width: 1024px) {
   .education-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .education-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   8. Projects Terminal Cards Responsiveness
-   -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .projects-terminal-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
-
-@media (max-width: 600px) {
-  .project-terminal-head .traffic {
-    display: none !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
   }
 
-  .project-terminal-head h3 {
-    padding: 0 8px;
-    font-size: 0.95rem;
-  }
-
-  .project-code-body {
-    padding: 16px 14px;
-  }
-
-  .project-code-body code {
-    font-size: 0.78rem;
-    line-height: 1.6;
-  }
-
-  .code-line {
-    padding-left: 12px;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   9. Contact Section & Form Responsiveness
-   -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-}
-
-@media (max-width: 600px) {
-  .contact-form-card {
-    padding: 20px 16px;
-  }
-
-  .form-field-group input,
-  .form-field-group textarea {
-    font-size: 16px !important;
-    padding: 12px 14px;
-  }
-
-  .contact-submit-btn {
-    width: 100%;
-    justify-content: center;
-    padding: 14px 20px;
-  }
-
-  .contact-info-row {
-    gap: 14px;
-  }
-
-  .contact-info-row a,
-  .contact-info-row span {
-    font-size: 0.94rem;
-    word-break: break-word;
-  }
-
-  .info-icon-badge {
-    width: 42px;
-    height: 42px;
-  }
-
-  .scroll-to-top-btn {
-    bottom: 20px !important;
-    right: 20px !important;
-    width: 42px !important;
-    height: 42px !important;
-  }
-}
-
-/* --------------------------------------------------------------------------
-   10. Touch Device Tooltip Rules
-   -------------------------------------------------------------------------- */
-@media (hover: none), (max-width: 768px) {
+  /* Disable pure hover tooltips on touch devices */
   [data-tooltip]::after,
   [data-tooltip]::before {
     display: none !important;
   }
 }
 
+@media (min-width: 769px) and (max-width: 1024px) {
+  .education-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 /* --------------------------------------------------------------------------
-   11. Galaxy S25 & Smartphone Master Optimization Block (< 480px)
+   3. Galaxy S25 & Smartphone Dedicated Fluid Breakpoint (<= 576px & <= 430px)
    -------------------------------------------------------------------------- */
+@media (max-width: 576px) {
+  .hero-copy h1 {
+    font-size: clamp(1.45rem, 6vw, 2.2rem) !important;
+    line-height: 1.3 !important;
+    margin-bottom: 20px !important;
+    word-break: break-word !important;
+  }
+
+  .section-title-ref {
+    margin: 0 0 32px 0 !important;
+  }
+
+  .section-title-ref .line {
+    width: 36px !important;
+  }
+
+  .section-title-ref .badge {
+    font-size: 1.05rem !important;
+    padding: 8px 18px !important;
+  }
+}
+
 @media (max-width: 480px) {
   html, body {
     width: 100vw !important;
@@ -419,14 +295,15 @@
   }
 
   .ref-hero {
-    padding: 24px 0 16px !important;
-    gap: 24px !important;
+    padding: 20px 0 16px !important;
+    gap: 20px !important;
   }
 
   .hero-copy h1 {
-    font-size: 1.5rem !important;
+    font-size: 1.45rem !important;
     line-height: 1.3 !important;
     margin-bottom: 16px !important;
+    overflow-wrap: anywhere !important;
     word-break: break-word !important;
   }
 
@@ -454,33 +331,42 @@
     font-size: 0.86rem !important;
   }
 
-  .terminal-card {
+  /* Code Cards & Terminal Text Overflow Protection */
+  .terminal-card,
+  .project-terminal-card {
     padding: 14px 10px !important;
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
     overflow: hidden !important;
   }
 
-  .terminal-card pre {
+  .terminal-card pre,
+  .project-code-body code,
+  pre, code {
     font-size: 0.72rem !important;
     line-height: 1.55 !important;
     white-space: pre-wrap !important;
-    word-break: break-word !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    max-width: 100% !important;
   }
 
   .about-section {
     padding-top: 28px !important;
     padding-bottom: 28px !important;
-    gap: 24px !important;
+    gap: 20px !important;
   }
 
   .profile-orb {
     width: 150px !important;
     height: 190px !important;
+    margin: 0 auto !important;
   }
 
   .about-copy .kicker {
-    font-size: 1rem !important;
-    margin-bottom: 10px !important;
+    font-size: 0.98rem !important;
+    margin-bottom: 8px !important;
   }
 
   .about-copy p {
@@ -494,11 +380,12 @@
   }
 
   .experience-visual {
-    max-width: 280px !important;
+    max-width: 260px !important;
+    margin: 0 auto !important;
   }
 
   .experience-grid {
-    gap: 18px !important;
+    gap: 16px !important;
   }
 
   .glow-card {
@@ -539,6 +426,14 @@
   .skills-section {
     padding-top: 28px !important;
     padding-bottom: 28px !important;
+    width: 100% !important;
+    overflow: hidden !important;
+  }
+
+  .skills-swiper {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: auto !important;
   }
 
   .skills-track {
@@ -572,7 +467,7 @@
   }
 
   .education-grid {
-    gap: 16px !important;
+    gap: 14px !important;
   }
 
   .education-card {
@@ -657,6 +552,7 @@
   .form-field-group textarea {
     padding: 12px 14px !important;
     font-size: 16px !important;
+    width: 100% !important;
   }
 
   .contact-submit-btn {
@@ -666,11 +562,12 @@
   }
 
   .contact-info-col {
-    gap: 18px !important;
+    gap: 16px !important;
   }
 
   .contact-info-row {
     gap: 12px !important;
+    width: 100% !important;
   }
 
   .info-icon-badge {
@@ -680,7 +577,7 @@
 
   .contact-info-row a,
   .contact-info-row span {
-    font-size: 0.9rem !important;
+    font-size: 0.88rem !important;
     word-break: break-all !important;
     overflow-wrap: anywhere !important;
   }
