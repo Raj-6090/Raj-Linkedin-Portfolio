@@ -108,16 +108,54 @@ export default function Portfolio() {
   useEffect(() => {
     const scroller = skillsRef.current;
     if (!scroller) return undefined;
-    const timer = setInterval(() => {
-      const max = scroller.scrollWidth - scroller.clientWidth;
-      if (max <= 0) return;
-      if (scroller.scrollLeft >= max - 2) {
-        scroller.scrollLeft = 0;
-      } else {
-        scroller.scrollLeft += 1.2;
+
+    let animId;
+    let isPaused = false;
+    let pauseTimeout;
+
+    const scroll = () => {
+      if (!isPaused && scroller) {
+        const max = scroller.scrollWidth - scroller.clientWidth;
+        if (max > 0) {
+          if (scroller.scrollLeft >= max - 1) {
+            scroller.scrollLeft = 0;
+          } else {
+            scroller.scrollLeft += 0.8;
+          }
+        }
       }
-    }, 30);
-    return () => clearInterval(timer);
+      animId = requestAnimationFrame(scroll);
+    };
+
+    animId = requestAnimationFrame(scroll);
+
+    const handleTouchStart = () => {
+      isPaused = true;
+      clearTimeout(pauseTimeout);
+    };
+
+    const handleTouchEnd = () => {
+      clearTimeout(pauseTimeout);
+      pauseTimeout = setTimeout(() => {
+        isPaused = false;
+      }, 1500);
+    };
+
+    scroller.addEventListener('touchstart', handleTouchStart, { passive: true });
+    scroller.addEventListener('touchend', handleTouchEnd, { passive: true });
+    scroller.addEventListener('mouseenter', handleTouchStart);
+    scroller.addEventListener('mouseleave', handleTouchEnd);
+
+    return () => {
+      cancelAnimationFrame(animId);
+      clearTimeout(pauseTimeout);
+      if (scroller) {
+        scroller.removeEventListener('touchstart', handleTouchStart);
+        scroller.removeEventListener('touchend', handleTouchEnd);
+        scroller.removeEventListener('mouseenter', handleTouchStart);
+        scroller.removeEventListener('mouseleave', handleTouchEnd);
+      }
+    };
   }, [data]);
 
   const handleContactSubmit = async (e) => {
