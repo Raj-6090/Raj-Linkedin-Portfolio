@@ -29,7 +29,7 @@ const WhatsappIcon = () => (
 );
 
 const CodeCard = ({ profile, skills, coder, softSkills = [] }) => {
-  const skillLines = Array.from({ length: Math.ceil(skills.length / 4) }, (_, index) => skills.slice(index * 4, index * 4 + 4));
+  const skillLines = Array.from({ length: Math.ceil(skills.length / 2) }, (_, index) => skills.slice(index * 2, index * 2 + 2));
   return <div className="terminal-card hero-terminal">
     <div className="terminal-line" /><div className="terminal-bar"><i /><i /><i /></div>
     <pre><span className="pink">const</span> <span className="white">coder</span> <span className="pink">=</span> {'{'}
