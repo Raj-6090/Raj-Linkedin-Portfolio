@@ -1,15 +1,15 @@
 /* ==========================================================================
-   RAJ KANERIYA PORTFOLIO — MASTER RESPONSIVE STYLESHEET
-   Fixes layout shifting, side-title overflow, squished columns,
-   and ensures 100% perfect fluid display on Galaxy S25, iPhone & Tablets.
+   RAJ KANERIYA PORTFOLIO — MASTER RESPONSIVE MEDIA QUERIES
+   Guarantees 100% fluid mobile, tablet & desktop responsiveness without horizontal scroll.
+   Supports Galaxy S25, iPhone 14/15/16 Pro, iPad, Surface, and Foldable screens.
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   0. Global Base Reset for Responsive Security
+   0. Global Responsive Safeguards & Root Viewport Resets
    -------------------------------------------------------------------------- */
 html, body {
   width: 100% !important;
-  max-width: 100% !important;
+  max-width: 100vw !important;
   margin: 0 !important;
   padding: 0 !important;
   overflow-x: hidden !important;
@@ -25,7 +25,18 @@ img, svg, canvas, video {
   height: auto !important;
 }
 
-/* Hide Protruding Side Titles Except on Wide Desktop screens (> 1300px) */
+/* Force main container to respect viewport bounds on all devices */
+.ashik-style {
+  width: 100% !important;
+  max-width: 1240px !important;
+  margin: 0 auto !important;
+  padding: 0 24px;
+  position: relative !important;
+  box-sizing: border-box !important;
+  overflow-x: hidden !important;
+}
+
+/* Hide protruding decorative side titles on screens < 1300px to prevent overflow */
 .side-title,
 .contact-side-title {
   display: none !important;
@@ -49,43 +60,30 @@ img, svg, canvas, video {
   }
 }
 
-/* Force container bounds to prevent horizontal whitespace on mobile */
-.ashik-style {
-  width: 100% !important;
-  max-width: 1240px !important;
-  margin: 0 auto !important;
-  padding: 0 24px;
-  position: relative !important;
-  box-sizing: border-box !important;
-  overflow-x: hidden !important;
+/* --------------------------------------------------------------------------
+   1. Laptop & Large Tablet Breakpoints (1025px to 1200px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 1100px) {
+  .ashik-style {
+    padding: 0 20px !important;
+  }
+
+  .ref-hero,
+  .about-section,
+  .experience-layout,
+  .contact-grid {
+    gap: 36px !important;
+  }
 }
 
 /* --------------------------------------------------------------------------
-   1. Laptop & Tablet Layout Tuning (768px - 1100px)
+   2. Medium Tablets & Landscape Devices (769px to 992px)
    -------------------------------------------------------------------------- */
-@media (max-width: 1100px) {
-  .ref-hero {
-    gap: 36px;
-  }
-
-  .about-section {
-    gap: 36px;
-  }
-
-  .experience-layout {
-    gap: 36px;
-  }
-
-  .contact-grid {
-    gap: 36px;
-  }
-}
-
 @media (max-width: 992px) {
   .ref-hero {
     grid-template-columns: 1fr !important;
     gap: 36px !important;
-    padding: 40px 0 24px !important;
+    padding: 36px 0 24px !important;
     min-height: auto !important;
     text-align: center !important;
   }
@@ -104,9 +102,7 @@ img, svg, canvas, video {
   .hero-actions {
     justify-content: center !important;
   }
-}
 
-@media (max-width: 900px) {
   .about-section {
     flex-direction: column-reverse !important;
     text-align: center !important;
@@ -138,55 +134,67 @@ img, svg, canvas, video {
 
   .contact-grid {
     grid-template-columns: 1fr !important;
-    gap: 36px !important;
+    gap: 32px !important;
   }
 }
 
 /* --------------------------------------------------------------------------
-   2. Mobile Standard Breakpoint (<= 768px)
+   3. Tablet Portrait & Mobile Core Breakpoint (<= 768px)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .ashik-style {
     padding: 0 16px !important;
   }
 
+  /* Mobile Navbar Header */
   .ref-nav {
     padding: 14px 18px !important;
+    margin-bottom: 12px !important;
     z-index: 100 !important;
+    border-radius: 0 0 12px 12px !important;
   }
 
   .ref-logo {
     font-size: 1.1rem !important;
   }
 
+  /* Hamburger Menu Trigger Button */
   .menu-trigger {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    width: 42px !important;
-    height: 42px !important;
+    width: 44px !important;
+    height: 44px !important;
     border-radius: 10px !important;
-    background: var(--bg-card) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
     border: 1px solid var(--border-subtle) !important;
     color: var(--text-main) !important;
+    cursor: pointer !important;
     z-index: 101 !important;
+    transition: background 0.2s ease, border-color 0.2s ease !important;
   }
 
+  .menu-trigger:active {
+    background: rgba(22, 242, 179, 0.15) !important;
+    border-color: var(--neon-mint) !important;
+  }
+
+  /* Mobile Navigation Overlay Menu Drawer */
   .ref-nav nav {
     position: absolute !important;
-    top: calc(100% + 10px) !important;
+    top: calc(100% + 8px) !important;
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
     flex-direction: column !important;
-    background: rgba(13, 18, 36, 0.98) !important;
+    background: rgba(11, 15, 25, 0.98) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
-    padding: 20px 16px !important;
-    gap: 12px !important;
+    padding: 16px 14px !important;
+    gap: 10px !important;
     border: 1px solid var(--border-subtle) !important;
     border-radius: 14px !important;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.7) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8) !important;
     display: flex !important;
     opacity: 0 !important;
     visibility: hidden !important;
@@ -206,13 +214,24 @@ img, svg, canvas, video {
   .ref-nav nav a {
     width: 100% !important;
     text-align: center !important;
-    padding: 12px 18px !important;
-    border-radius: 8px !important;
-    background: rgba(255, 255, 255, 0.03) !important;
-    font-size: 0.98rem !important;
+    padding: 14px 18px !important;
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: var(--text-main) !important;
+    font-size: 1rem !important;
     font-weight: 600 !important;
+    min-height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
 
+  .ref-nav nav a:active {
+    background: rgba(22, 242, 179, 0.15) !important;
+    color: var(--neon-mint) !important;
+  }
+
+  /* Section Spacing on Mobile */
   .about-section,
   .experience-section,
   .skills-section,
@@ -228,7 +247,13 @@ img, svg, canvas, video {
     gap: 20px !important;
   }
 
-  /* Disable pure hover tooltips on touch devices */
+  /* Input fields: font-size 16px to prevent iOS Safari auto-zoom */
+  .form-field-group input,
+  .form-field-group textarea {
+    font-size: 16px !important;
+  }
+
+  /* Disable hover tooltips on touch devices to prevent sticky tooltips */
   [data-tooltip]::after,
   [data-tooltip]::before {
     display: none !important;
@@ -242,30 +267,42 @@ img, svg, canvas, video {
 }
 
 /* --------------------------------------------------------------------------
-   3. Galaxy S25 & Smartphone Dedicated Fluid Breakpoint (<= 576px & <= 430px)
+   4. Phablets & Mobile Devices (<= 576px)
    -------------------------------------------------------------------------- */
 @media (max-width: 576px) {
   .hero-copy h1 {
-    font-size: clamp(1.45rem, 6vw, 2.2rem) !important;
+    font-size: clamp(1.4rem, 6vw, 2.1rem) !important;
     line-height: 1.3 !important;
     margin-bottom: 20px !important;
     word-break: break-word !important;
+    overflow-wrap: anywhere !important;
   }
 
   .section-title-ref {
-    margin: 0 0 32px 0 !important;
+    margin: 0 0 28px 0 !important;
   }
 
   .section-title-ref .line {
-    width: 36px !important;
+    width: 32px !important;
   }
 
   .section-title-ref .badge {
-    font-size: 1.05rem !important;
-    padding: 8px 18px !important;
+    font-size: 1rem !important;
+    padding: 8px 16px !important;
+  }
+
+  .contact-submit-btn {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 0.9rem !important;
+    min-height: 48px !important;
   }
 }
 
+/* --------------------------------------------------------------------------
+   5. Standard Smartphones (<= 480px, e.g. iPhone 14/15/16, Galaxy S25, Pixel)
+   -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   html, body {
     width: 100vw !important;
@@ -286,22 +323,22 @@ img, svg, canvas, video {
   }
 
   .ref-logo {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
   }
 
   .menu-trigger {
-    width: 38px !important;
-    height: 38px !important;
+    width: 40px !important;
+    height: 40px !important;
   }
 
   .ref-hero {
-    padding: 20px 0 16px !important;
+    padding: 16px 0 16px !important;
     gap: 20px !important;
   }
 
   .hero-copy h1 {
-    font-size: 1.45rem !important;
-    line-height: 1.3 !important;
+    font-size: 1.35rem !important;
+    line-height: 1.35 !important;
     margin-bottom: 16px !important;
     overflow-wrap: anywhere !important;
     word-break: break-word !important;
@@ -309,29 +346,30 @@ img, svg, canvas, video {
 
   .socials {
     margin-bottom: 20px !important;
-    gap: 12px !important;
+    gap: 14px !important;
   }
 
   .socials a {
-    width: 38px !important;
-    height: 38px !important;
+    width: 42px !important;
+    height: 42px !important;
   }
 
   .hero-actions {
     flex-direction: column !important;
     width: 100% !important;
-    gap: 10px !important;
+    gap: 12px !important;
   }
 
   .outline-cta,
   .fill-cta {
     width: 100% !important;
     justify-content: center !important;
-    padding: 12px 16px !important;
-    font-size: 0.86rem !important;
+    padding: 14px 18px !important;
+    font-size: 0.9rem !important;
+    min-height: 44px !important;
   }
 
-  /* Code Cards & Terminal Text Overflow Protection */
+  /* Code Cards & Terminal Text Overflow Safeguards */
   .terminal-card,
   .project-terminal-card {
     padding: 14px 10px !important;
@@ -339,6 +377,7 @@ img, svg, canvas, video {
     max-width: 100% !important;
     box-sizing: border-box !important;
     overflow: hidden !important;
+    border-radius: 12px !important;
   }
 
   .terminal-card pre,
@@ -352,9 +391,10 @@ img, svg, canvas, video {
     max-width: 100% !important;
   }
 
+  /* About Section */
   .about-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
     gap: 20px !important;
   }
 
@@ -365,22 +405,23 @@ img, svg, canvas, video {
   }
 
   .about-copy .kicker {
-    font-size: 0.98rem !important;
+    font-size: 0.92rem !important;
     margin-bottom: 8px !important;
   }
 
   .about-copy p {
-    font-size: 0.94rem !important;
+    font-size: 0.92rem !important;
     line-height: 1.65 !important;
   }
 
+  /* Experience Section */
   .experience-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 
   .experience-visual {
-    max-width: 260px !important;
+    max-width: 250px !important;
     margin: 0 auto !important;
   }
 
@@ -404,12 +445,12 @@ img, svg, canvas, video {
   }
 
   .experience-card-body h3 {
-    font-size: 1.05rem !important;
+    font-size: 1.02rem !important;
     word-break: break-word !important;
   }
 
   .experience-company {
-    font-size: 0.88rem !important;
+    font-size: 0.86rem !important;
   }
 
   .glow-card ul {
@@ -423,9 +464,10 @@ img, svg, canvas, video {
     line-height: 1.5 !important;
   }
 
+  /* Skills Section Horizontal Carousel */
   .skills-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
     width: 100% !important;
     overflow: hidden !important;
   }
@@ -434,36 +476,40 @@ img, svg, canvas, video {
     width: 100% !important;
     max-width: 100% !important;
     overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scroll-snap-type: x mandatory !important;
   }
 
   .skills-track {
     gap: 10px !important;
-    padding-top: 12px !important;
-    padding-bottom: 12px !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
   }
 
   .skills-track .skill-card {
-    width: 120px !important;
-    height: 105px !important;
-    flex: 0 0 120px !important;
+    width: 115px !important;
+    height: 100px !important;
+    flex: 0 0 115px !important;
     padding: 10px 8px !important;
     gap: 8px !important;
+    scroll-snap-align: start !important;
   }
 
   .skills-track .skill-card > svg,
   .brand-skill-icon {
-    width: 32px !important;
-    height: 32px !important;
-    font-size: 1.2rem !important;
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 1.15rem !important;
   }
 
   .skills-track .skill-card strong {
-    font-size: 0.8rem !important;
+    font-size: 0.78rem !important;
   }
 
+  /* Education Section */
   .education-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 
   .education-grid {
@@ -475,16 +521,17 @@ img, svg, canvas, video {
   }
 
   .education-card h3 {
-    font-size: 1.02rem !important;
+    font-size: 1rem !important;
   }
 
+  /* Projects Section */
   .projects-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 
   .projects-terminal-grid {
-    gap: 20px !important;
+    gap: 18px !important;
   }
 
   .project-terminal-card {
@@ -493,8 +540,8 @@ img, svg, canvas, video {
   }
 
   .project-terminal-head {
-    min-height: 44px !important;
-    padding: 10px 12px !important;
+    min-height: 40px !important;
+    padding: 8px 12px !important;
   }
 
   .project-terminal-head .traffic {
@@ -502,50 +549,52 @@ img, svg, canvas, video {
   }
 
   .project-terminal-head h3 {
-    font-size: 0.9rem !important;
+    font-size: 0.88rem !important;
     padding: 0 !important;
     word-break: break-word !important;
   }
 
   .project-code-body {
-    padding: 14px 10px !important;
+    padding: 12px 10px !important;
   }
 
   .project-code-body code {
-    font-size: 0.74rem !important;
+    font-size: 0.72rem !important;
     line-height: 1.55 !important;
   }
 
   .code-line {
-    padding-left: 8px !important;
+    padding-left: 6px !important;
     margin: 2px 0 !important;
   }
 
+  /* Contact Section */
   .contact-section {
-    padding-top: 28px !important;
-    padding-bottom: 28px !important;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
   }
 
   .contact-kicker {
-    font-size: 0.95rem !important;
-    margin-bottom: 20px !important;
+    font-size: 0.9rem !important;
+    margin-bottom: 16px !important;
   }
 
   .contact-grid {
-    gap: 24px !important;
+    gap: 20px !important;
   }
 
   .contact-form-card {
-    padding: 18px 12px !important;
+    padding: 16px 12px !important;
+    border-radius: 14px !important;
   }
 
   .contact-description {
-    font-size: 0.88rem !important;
-    margin-bottom: 18px !important;
+    font-size: 0.86rem !important;
+    margin-bottom: 16px !important;
   }
 
   .form-field-group {
-    margin-bottom: 14px !important;
+    margin-bottom: 12px !important;
   }
 
   .form-field-group input,
@@ -553,45 +602,97 @@ img, svg, canvas, video {
     padding: 12px 14px !important;
     font-size: 16px !important;
     width: 100% !important;
-  }
-
-  .contact-submit-btn {
-    width: 100% !important;
-    padding: 12px 16px !important;
-    font-size: 0.82rem !important;
+    border-radius: 10px !important;
   }
 
   .contact-info-col {
-    gap: 16px !important;
+    gap: 14px !important;
   }
 
   .contact-info-row {
     gap: 12px !important;
     width: 100% !important;
+    padding: 10px 12px !important;
+    border-radius: 10px !important;
   }
 
   .info-icon-badge {
     width: 40px !important;
     height: 40px !important;
+    flex-shrink: 0 !important;
   }
 
   .contact-info-row a,
   .contact-info-row span {
-    font-size: 0.88rem !important;
+    font-size: 0.86rem !important;
     word-break: break-all !important;
     overflow-wrap: anywhere !important;
   }
 
   footer {
-    padding: 24px 0 !important;
-    font-size: 0.82rem !important;
-    margin-top: 24px !important;
+    padding: 20px 0 !important;
+    font-size: 0.8rem !important;
+    margin-top: 20px !important;
   }
 
   .scroll-to-top-btn {
     bottom: 16px !important;
     right: 16px !important;
-    width: 40px !important;
-    height: 40px !important;
+    width: 42px !important;
+    height: 42px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   6. Ultra Compact Smartphones (<= 360px, e.g. Galaxy Fold folded screen)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .ashik-style {
+    padding: 0 8px !important;
+  }
+
+  .ref-nav {
+    padding: 10px 12px !important;
+  }
+
+  .ref-logo {
+    font-size: 0.88rem !important;
+  }
+
+  .hero-copy h1 {
+    font-size: 1.2rem !important;
+  }
+
+  .terminal-card pre,
+  .project-code-body code,
+  pre, code {
+    font-size: 0.65rem !important;
+  }
+
+  .profile-orb {
+    width: 130px !important;
+    height: 165px !important;
+  }
+
+  .skills-track .skill-card {
+    width: 100px !important;
+    height: 90px !important;
+    flex: 0 0 100px !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. Mobile Landscape Orientation (max-height 500px)
+   -------------------------------------------------------------------------- */
+@media (max-height: 500px) and (orientation: landscape) {
+  .ref-hero {
+    min-height: auto !important;
+    padding: 20px 0 !important;
+  }
+
+  .ref-nav nav {
+    max-height: 75vh !important;
+    overflow-y: auto !important;
   }
 }
