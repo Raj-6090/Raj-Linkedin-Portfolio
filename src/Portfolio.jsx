@@ -34,7 +34,9 @@ const CodeCard = ({ profile, skills, coder, softSkills = [] }) => {
     <div className="terminal-line" /><div className="terminal-bar"><i /><i /><i /></div>
     <pre><span className="pink">const</span> <span className="white">coder</span> <span className="pink">=</span> {'{'}
       <br />  <span className="white">name:</span> <span className="amber">'{profile.name}'</span>,
-      <br />  <span className="white">skills:</span> [<span className="amber">'{skillLines.map((line) => line.join("', '")).join("',\n    '")}'</span>],
+      <br />  <span className="white">skills:</span> [
+      <br />    <span className="amber">'{skillLines.map((line) => line.join("', '")).join("',\n    '")}'</span>
+      <br />  ],
       <br />  <span className="white">hardWorker:</span> <span className="orange">{String(coder.hardWorker)}</span>,
       <br />  <span className="white">quickLearner:</span> <span className="orange">{String(coder.quickLearner)}</span>,
       <br />  <span className="white">problemSolver:</span> <span className="orange">{String(coder.problemSolver)}</span>,
